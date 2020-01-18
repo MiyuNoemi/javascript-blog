@@ -35,12 +35,13 @@ const titleClickHandler = function(event){
     console.log('get href', articleSelector);
   
     /* find the correct article using the selector (value of 'href' attribute) */
-    const targetArticle = document.querySelector('articleSelector');
+    const targetArticle = document.querySelector(articleSelector);
     console.log(targetArticle);
 
     /* add class 'active' to the correct article */
 
-    clickedElement.classList.add('active');
+    targetArticle.classList.add('active');
+
   }
   
   const links = document.querySelectorAll('.titles a');
