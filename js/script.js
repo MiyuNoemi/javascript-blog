@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 function showArticle() {
 
@@ -6,7 +6,7 @@ function showArticle() {
 
   //hide active article
   const activeArticle = document.querySelector('.post.active');
-  if(activeArticle) activeArticle.classList.remove('active');
+  if (activeArticle) activeArticle.classList.remove('active');
 
   //show new article acccoridng the link id
   const articleId = clickedElement.getAttribute('href');
@@ -14,7 +14,7 @@ function showArticle() {
 
   //remove active class from active links
   const activeLink = document.querySelector('.titles a.active');
-  if(activeLink) activeLink.classList.remove('active');
+  if (activeLink) activeLink.classList.remove('active');
 
   //add active class to clicked link
   clickedElement.classList.add('active');
@@ -23,21 +23,21 @@ function showArticle() {
 function generateTitleLinks() {
 
   const articles = document.querySelectorAll('.post');
-  const titleList = document.querySelector('.titles')
+  const titleList = document.querySelector('.titles');
 
-  titleList.innerHTML = ''
+  titleList.innerHTML = '';
   let listHTML = '';
 
-  for(let article of articles) {
+  for (let article of articles) {
     const articleId = article.getAttribute('id');
     const articleTitle = article.querySelector('.post-title').innerHTML;
     const html = `<li><a href="#${articleId}" class="active"><span>${articleTitle}</span></a></li>`;
     listHTML += html;
   }
 
-  titleList.innerHTML = listHTML
+  titleList.innerHTML = listHTML;
   const articleLinks = document.querySelectorAll('.titles a');
-  for(let link of articleLinks) {
+  for (let link of articleLinks) {
     link.addEventListener('click', showArticle);
   }
 
