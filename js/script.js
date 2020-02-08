@@ -44,3 +44,48 @@ function generateTitleLinks() {
 }
 
 generateTitleLinks();
+
+const articleTagsSelector = '.post-tags .list';
+
+function generateTags() {
+
+  /* find all articles */
+
+  const articles = document.querySelectorAll(articleTagsSelector);
+
+  // console.log(articles);
+
+  /* START LOOP: for every article: */
+
+  for (let article of articles) {
+
+    /* find tags wrapper */
+
+    const tagsWrapper = article.querySelector(articleTagsSelector);
+    // console.log(tagsWrapper);
+
+    /* make html variable with empty string */
+
+    let html = '';
+
+    /* get tags from data-tags attribute */
+    const tagsSelector = this.getAttribute('.data-tags');
+    console.log(tagsSelector);
+
+    /* split tags into array */
+
+    /* START LOOP: for each tag */
+
+    /* generate HTML of the link */
+
+    /* add generated code to html variable */
+
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+
+    /* END LOOP: for every article: */
+  }
+}
+
+generateTags();
