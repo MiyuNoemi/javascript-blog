@@ -45,32 +45,20 @@ function generateTitleLinks() {
 
 generateTitleLinks();
 
-const articleTagsSelector = '.post-tags .list';
 
 function generateTags() {
-
-  /* find all articles */
-
+  const articleTagsSelector = ('.post-tags .list');
+  /* [DONE] find all articles */
   const articles = document.querySelectorAll(articleTagsSelector);
-
-  // console.log(articles);
-
-  /* START LOOP: for every article: */
-
+  /* [DONE] START LOOP: for every article: */
   for (let article of articles) {
-
-    /* find tags wrapper */
-
+    /* [DONE] find tags wrapper */
     const tagsWrapper = article.querySelector(articleTagsSelector);
-    // console.log(tagsWrapper);
-
-    /* make html variable with empty string */
-
+    /* [DONE]  make html variable with empty string */
     let html = '';
-
-    /* get tags from data-tags attribute */
-    const tagsSelector = this.getAttribute('.data-tags');
-    console.log(tagsSelector);
+    /* [DONE] get tags from data-tags attribute */
+    const articleTags = article.getAttribute('data-tags');
+    console.log(articleTags);
 
     /* split tags into array */
 
