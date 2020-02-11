@@ -119,3 +119,35 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
+
+function generateAuthors() {
+  const articleAuthorSelector = ('.post-author');
+  console.log(articleAuthorSelector);
+  /* [DONE] find all articles */
+  const articleList = document.querySelectorAll('.post');
+  console.log(articleList);
+  /* [DONE] START LOOP: for every article: */
+  for (let articleSingle of articleList) {
+    /* [DONE] find tags wrapper */
+    const authWrapper = articleSingle.querySelector(articleAuthorSelector);
+    console.log(authWrapper);
+    /* [DONE]  make html variable with empty string */
+    let html = '';
+    /* [DONE] get tags from data-tags attribute */
+    const dataAuth = articleSingle.getAttribute('data-author');
+    // console.log();
+    /* START LOOP: for each tag */
+
+    /* generate HTML of the link */
+    const linkHTML = `<li><a href="#auth-${dataAuth}">${dataAuth}</a></li>`;
+    /* add generated code to html variable */
+    html = html + linkHTML;
+    /* END LOOP: for each tag */
+
+    /* insert HTML of all the links into the tags wrapper */
+    authWrapper.innerHTML = html;
+    /* END LOOP: for every article: */
+  }
+}
+
+generateAuthors();
