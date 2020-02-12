@@ -118,7 +118,6 @@ function generateTags() {
     for (let tag in allTags) {
       const tagLinkHTML = '<a href="#tag-' + tag + '" class="' + calculateTagClass(allTags[tag], tagsParams) + '">' + tag + '</a>&nbsp;(' + allTags[tag] + ') ';
       // console.log('tagLinkHTML:', tagLinkHTML);
-      // console.log(allTags[tag]);
       /* [NEW] generate code of a link and add it to allTagsHTML */
       // allTagsHTML += tag + ' (' + allTags[tag] + ') ';
       allTagsHTML += tagLinkHTML;
@@ -174,8 +173,11 @@ function addClickListenersToTags() {
 }
 
 addClickListenersToTags();
+const authListSelector = '.authors.list';
 
 function generateAuthors() {
+  /* [NEW] create a new variable allTags with an empty array */
+  let allAuth = {};
   const articleAuthorSelector = ('.post-author');
   // console.log(articleAuthorSelector);
   /* [DONE] find all articles */
@@ -194,14 +196,43 @@ function generateAuthors() {
     /* START LOOP: for each tag */
 
     /* generate HTML of the link */
-    const linkHTML = `<li><a href="#auth-${dataAuth}">${dataAuth}</a></li>`;
+    const linkHTML = 'wanted by: <a href="#auth-' + dataAuth + '">' + dataAuth + '</a> ';
     /* add generated code to html variable */
     html = html + linkHTML;
     /* END LOOP: for each tag */
-
+    /* [NEW] check if this link is NOT already in allTags */
+    if (!allAuth[dataAuth]) {
+      /* [NEW] add tag to allTags object */
+      allAuth[dataAuth] = 1;
+    } else {
+      allAuth[dataAuth]++;
+    }
+    //console.log(allAuth);
     /* insert HTML of all the links into the tags wrapper */
     authWrapper.innerHTML = html;
     /* END LOOP: for every article: */
+    const authList = document.querySelector(authListSelector);
+    //console.log(authList);
+    const authParams = calculateTagsParams(allAuth);
+    //console.log(authParams);
+    /* [DONE] END LOOP: for every article: */
+    /* [NEW] create variable for all links HTML code */
+    let allAuthHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for (let auth in allAuth) {
+      //console.log(tag);
+      const authLinkHTML = '<a href="#auth-' + auth + '" class="' + calculateTagClass(allAuth[auth], authParams) + '">' + auth + '</a>&nbsp;(' + allAuth[auth] + ') '; //spacja
+      //console.log('tagLinkHTML:', tagLinkHTML);
+      //console.log(allTags[tag]);
+      /* [NEW] generate code of a link and add it to allTagsHTML */
+      //allTagsHTML += '<a class="" href="#tag-' + tag + '">' + tag + '</a>' + ' (' + allTags[tag] + ') ';
+      allAuthHTML += authLinkHTML;
+    }
+    /* [NEW] END LOOP: for each tag in allTags: */
+
+    /*[NEW] add HTML from allTagsHTML to tagList */
+    authList.innerHTML = allAuthHTML;
   }
 }
 
