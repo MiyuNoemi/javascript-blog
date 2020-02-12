@@ -1,7 +1,10 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:400,600|Sacramento|Source+Sans+Pro:300&subset=latin-ext");
+
 /* Variables */
 /* Global */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -32,6 +35,10 @@ body {
   color: #777777;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* Layout */
 .wrapper {
   display: -ms-flexbox;
@@ -41,15 +48,16 @@ body {
 
 .sidebar {
   -ms-flex: 1 0 0px;
-      flex: 1 0 0;
+  flex: 1 0 0;
 }
 
 .posts {
   -ms-flex: 2 0 0px;
-      flex: 2 0 0;
+  flex: 2 0 0;
 }
 
-.sidebar, .posts {
+.sidebar,
+.posts {
   background: #fff;
   margin-right: 10px;
   padding: 40px;
@@ -97,6 +105,8 @@ body {
 
 .post-author {
   font-style: italic;
+  font-weight: bold;
+  color: black;
 }
 
 .post-tags {
@@ -107,4 +117,33 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
+
 /*# sourceMappingURL=style.css.map */
+.tag-size-1,
+.tag-size-2,
+.tag-size-3,
+.tag-size-4,
+.tag-size-5 {
+  text-decoration: none;
+  color: darkorange;
+}
+
+.tag-size-1 {
+  font-size: 120%;
+}
+
+.tag-size-2 {
+  font-size: 80%;
+}
+
+.tag-size-3 {
+  font-size: 100%;
+}
+
+.tag-size-4 {
+  font-size: 150%;
+}
+
+.tag-size-5 {
+  font-size: 120%;
+}
