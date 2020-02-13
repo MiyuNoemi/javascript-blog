@@ -45,30 +45,6 @@ function generateTitleLinks(customSelector = '') {
   }
 }
 generateTitleLinks();
-function calculateTagsParams(tags) {
-  const params = {
-    min: 99,
-    max: 0
-  };
-  for (let tag in tags) {
-
-    if (tags[tag] > params.max) {
-      params.max = tags[tag];
-    }
-    if (tags[tag] < params.min) {
-      params.min = tags[tag];
-    }
-  }
-  return params;
-}
-
-const cloudClassCount = 5;
-const cloudClassPrefix = 'tag-size-';
-
-function calculateTagClass(count, params) {
-  const classNumber = Math.floor(((count - params.min) / (params.max - params.min)) * (cloudClassCount - 1) + 1);
-  return cloudClassPrefix + classNumber;
-}
 
 const articleTagsSelector = ('.post-tags .list');
 
@@ -92,8 +68,7 @@ function generateTags() {
       const linkHTML = templates.tagLink(linkHTMLData);
       html = html + linkHTML;
 
-      if (!allTags[tag]) {
-
+      if (!allTags[tag]) { //intel, nvidiia, amd, hobby, test, intel
         allTags[tag] = 1;
       } else {
         allTags[tag]++;
@@ -102,17 +77,23 @@ function generateTags() {
     }
 
     const tagList = document.querySelector('.tags');
-
-    const tagsParams = calculateTagsParams(allTags);
     const allTagsData = {
       tags: []
-    };
+    }
 
     for (let tag in allTags) {
+
+      let className = '';
+      if (allTags[tag] > 5) className = 'tag-size-big';
+      else if (allTags[tag] > 4) className = 'tag-size-big-medium';
+      else if (allTags[tag] > 3) className = 'tag-size-medium';
+      else if (allTags[tag] > 2) className = 'tag-size-medium-small';
+      else className = 'tag-size-small';
+
       allTagsData.tags.push({
         tag: tag,
         count: allTags[tag],
-        className: calculateTagClass(allTags[tag], tagsParams)
+        className: className,
       });
     }
 
@@ -181,8 +162,6 @@ function generateAuthors() {
     }
     authWrapper.innerHTML = html;
     const authList = document.querySelector(authListSelector);
-    const authParams = calculateTagsParams(allAuth);
-
     const allAuthData = {
       auths: []
     };
@@ -191,7 +170,6 @@ function generateAuthors() {
       allAuthData.auths.push({
         auth: auth,
         count: allAuth[auth],
-        className: calculateTagClass(allAuth[auth], authParams)
       });
     }
 
