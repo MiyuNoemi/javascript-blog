@@ -243,13 +243,11 @@
   <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
 </script>
 <script id="template-tag-link" type="text/x-handlebars-template">
-  <li><a href="#tag-{{ id }}">{{ id }}</a></li>  <!-- '<li><a href="#tag-' + tag + '">' + tag + '</a></li> '; -->
+  <li><a href="#tag-{{ id }}">{{ id }}</a></li>
 </script>
 
-<script id="template-author-link" type="text/x-handlebars-template"> <!-- handlebar authorLink -->
-  <p>wanted by: <a href="#auth-{{ id }}">{{ id }}</a>
-    <p>
-      <!-- 'wanted by: <a href="#auth-' + dataAuth + '">' + dataAuth + '</a> '; -->
+<script id="template-author-link" type="text/x-handlebars-template">
+  <p>wanted by: <a href="#auth-{{ id }}">{{ id }}</a></p>
 </script>
 
 <script id="template-tag-cloud-link" type="text/x-handlebars-template">
@@ -262,7 +260,7 @@
 
 <script id="template-author-cloud-link" type="text/x-handlebars-template">
 
-  {{#each auths}} <!-- '<a href="#auth-' + auth + '" class="' + calculateTagClass(allAuth[auth], authParams) + '">' + auth + '</a>&nbsp;(' + allAuth[auth] + ') -->
+  {{#each auths}}
   <li><a href="#auth-{{ auth }}" class="{{className}}" >{{ auth }}</a>&nbsp;({{ count }}) </li>
  {{/each}}
 
